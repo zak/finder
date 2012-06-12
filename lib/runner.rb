@@ -1,2 +1,3 @@
+#!/usr/bin/env ruby
 require 'finder'
-Finder.new($stdin.read.split("\n"), ARGV)
+Finder::WorkerPool.new($stdin.read.split("\n"), ARGV)

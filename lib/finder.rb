@@ -1,5 +1,7 @@
 require "finder/version"
 
 module Finder
-  # Your code goes here...
+  autoload :Putter, "finder/putter"
+  autoload :Worker, "finder/worker"
+  autoload :WorkerPool, "finder/worker_pool"
 end

@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
-begin
-  require 'finder/runner'
-rescue LoadError
-  $stderr.puts "Could not find 'finder/runner'"
-  exit(1)
-end
+
+#begin
+  require 'finder'
+#  require 'finder/worker_pool'
+
+  Finder::WorkerPool.new($stdin.read.split("\n"), ARGV)
+#rescue LoadError
+#  $stderr.puts "Could not find 'finder'"
+#  exit(1)
+#end
