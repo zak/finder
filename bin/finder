@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+begin
+  require 'finder/runner'
+rescue LoadError
+  $stderr.puts "Could not find 'finder/runner'"
+  exit(1)
+end

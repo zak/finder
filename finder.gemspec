@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["zak.31337@gmail.com"]
   gem.description   = %q{TODO: Write a gem description}
   gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.homepage      = "http://github.com/zak/finder"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "finder"
   gem.require_paths = ["lib"]
   gem.version       = Finder::VERSION
+
+  gem.add_development_dependency "rspec-core", "~> 2.10"
 end
