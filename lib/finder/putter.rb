@@ -9,7 +9,7 @@ module Finder
           #puts "[putter] next_line - #{next_line} #{workers[next_line]}"
           if !workers[next_line].nil? && workers[next_line].thread.stop? && workers[next_line].thread.key?(:result)
             #$stdout.write "\n\033[32m[putter]\033[0m #{next_line} = #{workers[next_line].thread[:result]}"
-            $stdout.write "\n#{workers[next_line].thread[:result]}"
+            $stdout.write "#{workers[next_line].thread[:result]}\n"
             next_line += 1
           else
             Thread.pass
