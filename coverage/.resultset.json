@@ -1,27 +1,30 @@
 {
   "RSpec": {
     "coverage": {
-      "/usr/home/dev/finder/lib/finder/worker.rb": [
+      "/home/zak/work/finder/lib/finder/putter.rb": [
         1,
         1,
         1,
         null,
         1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        null,
+        2,
+        2,
+        null,
+        4,
+        2,
+        2,
+        null,
+        2,
         null,
         null,
         null,
-        1,
-        0,
+        2,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1339540298
+    "timestamp": 1339581580
   }
 }
