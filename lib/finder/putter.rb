@@ -18,5 +18,9 @@ module Finder
       end
       @thread.priority = 10
     end
+
+    def join
+      thread.join
+    end
   end
 end

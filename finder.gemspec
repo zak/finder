@@ -17,6 +17,8 @@ Gem::Specification.new do |gem|
   gem.require_path  = "lib"
   gem.version       = Finder::VERSION
 
+  gem.add_dependency "httparty", "~> 0.8"
+
   gem.add_development_dependency "rspec-core", "~> 2.10"
   gem.add_development_dependency "rspec-mocks", "~> 2.10"
   gem.add_development_dependency "rspec-expectations", "~> 2.10"
