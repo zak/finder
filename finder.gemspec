@@ -18,4 +18,6 @@ Gem::Specification.new do |gem|
   gem.version       = Finder::VERSION
 
   gem.add_development_dependency "rspec-core", "~> 2.10"
+  gem.add_development_dependency "rspec-mocks", "~> 2.10"
+  gem.add_development_dependency "rspec-expectations", "~> 2.10"
 end
