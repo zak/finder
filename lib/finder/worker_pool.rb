@@ -11,7 +11,7 @@ module Finder
 
       @threads = []
       qs.each do |q|
-        @threads << Worker.new(q, number_row)
+        @threads << Worker.new(q, number_row || 1)
       end
       @putter = Putter.new(@threads)
       wait_putter
