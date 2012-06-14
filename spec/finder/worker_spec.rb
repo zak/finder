@@ -6,6 +6,7 @@ describe Finder::Worker do
 
   describe '#initializer' do
     let(:result_string) { 'result string' }
+    let(:other_result_string) { 'other result string' }
     let(:test_query) { 'test_query' }
     let(:httparty_response) do
       r = {
@@ -14,7 +15,10 @@ describe Finder::Worker do
             'results' => {
               'grouping' => {
                 'group' =>
-                  [0, {"doc" => {"domain" => result_string }}]
+                  [
+                    {"doc" => {"domain" => result_string }},
+                    {"doc" => {"domain" => other_result_string }}
+                  ]
               }
             }
           }
@@ -24,13 +28,22 @@ describe Finder::Worker do
       r
     end
 
-    it "creat thread and get value" do
+    it "creat thread and get 1 value" do
       HTTParty.should_receive(:get).once.and_return(httparty_response)
 
-      worker = worker_module.new(test_query)
+      worker = worker_module.new(test_query, 1)
       worker.thread.should be_an_instance_of(Thread)
       worker.thread.join
       worker.thread[:result].should eq(result_string)
+    end
+
+    it "creat thread and get 2 value" do
+      HTTParty.should_receive(:get).once.and_return(httparty_response)
+
+      worker = worker_module.new(test_query, 2)
+      worker.thread.should be_an_instance_of(Thread)
+      worker.thread.join
+      worker.thread[:result].should eq(other_result_string)
     end
 
     it "get bad request" do
