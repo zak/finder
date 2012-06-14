@@ -15,8 +15,6 @@ module Finder
       response = HTTParty.get(request(URI.escape(query)))
       return "[Error] for #{query} code - #{response.code}" if response.code != 200
       response['yandexsearch']['response']['results']['grouping']['group'][number_row.to_i]["doc"]["domain"] rescue "[Parsing error] for query - #{query}"
-    rescue
-      "[Error] for #{query}"
     end
 
     def request(query)

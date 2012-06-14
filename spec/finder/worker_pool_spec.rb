@@ -17,5 +17,14 @@ describe Finder::WorkerPool do
       pool.threads.should have(2).items
     end
 
+    it "create worker pool with arg" do
+      putter = double('Putter')
+      putter.should_receive(:join)
+
+      putter_module.should_receive(:new).with(any_args(), '3').once.and_return(putter)
+      pool = pool_module.new(%w(first second), ['garbage', '-n3'])
+      pool.threads.should have(2).items
+    end
+
   end
 end

@@ -9,7 +9,6 @@ module Finder
         $1 if arg.match(/-n(\d)/)
       end.compact.first
 
-      puts "number_row #{number_row}"
       @threads = []
       qs.each do |q|
         @threads << Worker.new(q, number_row)
