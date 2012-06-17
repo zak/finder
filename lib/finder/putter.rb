@@ -4,7 +4,8 @@ module Finder
 
     def initialize(sequence)
       @thread = Thread.new(sequence, 0) do |workers, next_line|
-        while next_line < workers.size do
+        loop do
+          break if Thread.main.key?(:stop) && next_line >= Thread.main[:stop]
           if workers[next_line] && workers[next_line].thread.status.nil?
             $stdout.write "#{next_line} \033[31mterminated\033[0m with an exception\n"
             next_line += 1

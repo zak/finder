@@ -1,11 +1,5 @@
 #!/usr/bin/env ruby
 
-#begin
-  require 'finder'
-#  require 'finder/worker_pool'
+require 'finder'
 
-  Finder::WorkerPool.new($stdin.read.split("\n"), ARGV)
-#rescue LoadError
-#  $stderr.puts "Could not find 'finder'"
-#  exit(1)
-#end
+Finder::WorkerPool.new
