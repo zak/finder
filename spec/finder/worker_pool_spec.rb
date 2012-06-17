@@ -7,23 +7,27 @@ describe Finder::WorkerPool do
   let(:putter_module) { finder_module::Putter }
 
   describe '#initialize' do
+    let(:putter) { double('Putter') }
+    let(:stub_putter) { putter.stub(:join); putter }
+    before do
+      STDIN.stub(:each_line).and_yield('first').and_yield('second')
+    end
 
     it "create worker pool" do
-      putter = double('Putter')
       putter.should_receive(:join)
-
       putter_module.should_receive(:new).once.and_return(putter)
-      pool = pool_module.new(%w(first second), [])
+      main = double('Thread')
+      main.should_receive(:[]=).with(:stop, 2)
+      Thread.should_receive(:main).and_return(main)
+
+      pool = pool_module.new([])
       pool.threads.should have(2).items
     end
 
     it "create worker pool with arg" do
-      putter = double('Putter')
-      putter.should_receive(:join)
+      putter_module.should_receive(:new).with(any_args(), '3').once.and_return(stub_putter)
 
-      putter_module.should_receive(:new).with(any_args(), '3').once.and_return(putter)
-      pool = pool_module.new(%w(first second), ['garbage', '-n3'])
-      pool.threads.should have(2).items
+      pool = pool_module.new(['-n3'])
     end
 
   end

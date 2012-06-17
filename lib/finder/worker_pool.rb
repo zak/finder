@@ -4,8 +4,8 @@ module Finder
     attr_reader :threads
     attr_reader :putter
 
-    def initialize
-      number_row = ARGV.map do |arg|
+    def initialize(argv)
+      number_row = argv.map do |arg|
         $1 if arg.match(/-n(\d)/)
       end.compact.first
 

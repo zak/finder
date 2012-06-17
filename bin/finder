@@ -2,4 +2,4 @@
 
 require 'finder'
 
-Finder::WorkerPool.new
+Finder::WorkerPool.new(ARGV)
