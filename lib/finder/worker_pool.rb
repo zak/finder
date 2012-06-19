@@ -12,7 +12,12 @@ module Finder
       @threads = []
       @putter = Putter.new(@threads)
       $stdin.each_line do |q|
-        @threads << Worker.new(q, number_row)
+        loop do
+          if @threads.inject(0) {|alive, worker| alive += 1 if worker.thread.alive?; alive} < 5
+            @threads << Worker.new(q, number_row)
+            break
+          end
+        end
       end
       Thread.main[:stop] = @threads.size
       wait_putter
