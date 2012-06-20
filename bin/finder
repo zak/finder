@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'finder'
-
-Finder::WorkerPool.new(ARGV)
